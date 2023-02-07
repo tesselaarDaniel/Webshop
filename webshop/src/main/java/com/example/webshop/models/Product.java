@@ -9,45 +9,61 @@ public class Product {
     @Column(name = "id", nullable = false)
     private Integer id;
     private String name;
-    private Integer quantity;
+    private Double rating;
+    private Integer episodes;
     private String type;
+    private String picture;
 
-    public Product(String name, Integer quantity, String type) {
+    public Product(String name, Double rating, Integer episodes, String type, String picture) {
         this.name = name;
-        this.quantity = quantity;
+        this.rating = rating;
+        this.episodes = episodes;
         this.type = type;
+        this.picture = picture;
     }
 
     public Product() {
 
     }
 
-    public Integer getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Double getRating() {
+        return rating;
+    }
+
+    public Integer getEpisodes() {
+        return episodes;
     }
 
     public String getType() {
         return type;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
+
+    public void setEpisodes(Integer episodes) {
+        this.episodes = episodes;
     }
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }
 
