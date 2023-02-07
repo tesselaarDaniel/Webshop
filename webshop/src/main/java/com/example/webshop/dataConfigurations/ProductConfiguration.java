@@ -13,11 +13,14 @@ public class ProductConfiguration {
     @Bean
     CommandLineRunner commandLineRunner(ProductRepository productRepository){
         return args -> {
-            Product eplPhone = new Product("phone", 3, "epl");
-            Product saomiPhone = new Product("phone", 33, "saomi");
-            Product szamszungPhone = new Product("phone", 23, "szamszung");
+            Product naruto = new Product("naruto", 2.3, 300, "shounen fight", "link");
+            Product nanatsuNoTaizai = new Product("Nanatsu no taizai", 1.0, 60, "shounen", "link");
+            Product goblinSlayer = new Product("Goblin slayer", 10.0, 60, "dark fantasy", "link");
+            Product hxh = new Product("Hunter x hunter", 6.6, 150, "shounen fight", "link");
+            Product fullMetalAlchemistBrotherhood = new Product("Full metal alchemist brotherhood", 4.5, 150, "shounen fight", "link");
 
-            productRepository.saveAll(List.of(eplPhone, saomiPhone, szamszungPhone));
+
+            productRepository.saveAll(List.of(naruto, nanatsuNoTaizai, goblinSlayer, hxh, fullMetalAlchemistBrotherhood));
         };
     }
 }
