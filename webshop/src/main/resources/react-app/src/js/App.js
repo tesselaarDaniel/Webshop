@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+
+import '../Design/App.css';
 import {apiGet} from "./DataHandler";
 import {useEffect} from "react";
 import {useState} from "react";
