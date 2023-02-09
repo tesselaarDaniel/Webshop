@@ -1,4 +1,4 @@
-import {Box, Container, Typography, Paper, Grid} from "@mui/material";
+import {Box, Container, Typography, Paper, Grid, Button} from "@mui/material";
 import {useEffect, useState} from "react";
 import {apiGet} from "./DataHandler";
 import Grid2 from "@mui/material/Unstable_Grid2";
@@ -24,14 +24,12 @@ const HomePage = () => {
     return (
         <div className="container">
             <div className="tool-container">
-
+                <button className="add-button">Add new anime to list</button>
             </div>
             <div className="container">
                 {productList}
             </div>
         </div>
-
-
     )
 }
 
