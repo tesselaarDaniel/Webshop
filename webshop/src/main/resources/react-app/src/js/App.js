@@ -1,4 +1,5 @@
 import '../design/App.css';
+import logo from '../my-anime-list-logo.png'
 
 import HomePage from "./HomePage";
 import {Container, Typography} from "@mui/material";
@@ -7,7 +8,7 @@ function App() {
   return (
       <div className="main-container">
           <div className="header-container">
-              <h1>My anime list</h1>
+              <img className="logo" src={logo} />
           </div>
           <div className="content">
               <HomePage/>
