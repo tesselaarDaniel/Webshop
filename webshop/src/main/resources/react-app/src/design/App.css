@@ -42,7 +42,8 @@
 }
 
 .anime-row {
-  border: 3px solid cyan;
+  border-radius: 2px;
+  border: 3px solid grey;
   padding: 10px;
   margin-top: 10px;
 }
@@ -100,4 +101,8 @@ body {
 .logo {
   width: 250px;
   height: 200px;
+}
+
+.col-titles {
+  font-size: 20px;
 }

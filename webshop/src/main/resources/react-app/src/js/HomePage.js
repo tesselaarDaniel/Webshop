@@ -11,7 +11,7 @@ const HomePage = () => {
             <div className="col">{product.name}</div>
             <div className="col">{product.rating}</div>
             <div className="col">{product.episodes}</div>
-            <div className="col">{product.episodes}</div>
+            <div className="col">{product.type}</div>
             <div className="col"><img src="../../public/logo192.png" alt="logo" /></div>
         </div>
         );
@@ -27,6 +27,13 @@ const HomePage = () => {
                 <button className="add-button">Add new anime to list</button>
             </div>
             <div className="container">
+                <div className="row col-titles">
+                    <div className="col">Name</div>
+                    <div className="col">rating</div>
+                    <div className="col">episodes</div>
+                    <div className="col">type</div>
+                    <div className="col"></div>
+                </div>
                 {productList}
             </div>
         </div>
