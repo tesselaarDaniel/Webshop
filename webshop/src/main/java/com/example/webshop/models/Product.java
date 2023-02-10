@@ -26,6 +26,13 @@ public class Product {
 
     }
 
+    public Product(String name, Double rating, String type, Integer episodes) {
+        this.name = name;
+        this.rating = rating;
+        this.episodes = episodes;
+        this.type = type;
+    }
+
     public String getName() {
         return name;
     }

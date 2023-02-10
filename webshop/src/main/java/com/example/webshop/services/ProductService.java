@@ -5,6 +5,7 @@ import com.example.webshop.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -15,7 +16,11 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public void addProduct(List<String> product){
-
+    public void addProduct(String[] product){
+        String name = product[0];
+        Double rating = Double.valueOf(product[1]);
+        String type = product[2];
+        Integer episodes = Integer.valueOf(product[3]);
+        productRepository.save(new Product(name, rating, type, episodes));
     }
 }

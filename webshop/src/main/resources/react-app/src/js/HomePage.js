@@ -1,11 +1,15 @@
-import {Box, Container, Typography, Paper, Grid, Button, TextField} from "@mui/material";
+import {Box, Container, Typography, Paper, Grid, Button, TextField, getTableSortLabelUtilityClass} from "@mui/material";
 import {useEffect, useState} from "react";
-import {apiGet} from "./DataHandler";
+import {apiGet, apiPost} from "./DataHandler";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import Popup from "./Popup";
+
+
 const HomePage = () => {
     const [data, setData] = useState([])
     const [openPopup, setOpenPopup] = useState(false);
+    const [value, setValue] = useState([]);
+
     const productList = data.map( product =>
         <div className="row anime-row">
             <div className="col">{product.name}</div>
@@ -20,9 +24,19 @@ const HomePage = () => {
         apiGet(`/product`)
             .then(r => setData(r))
     }, []);
+     function addAnime(){
+         let name = document.getElementById("Name").value;
+         let rating = document.getElementById("Rating").value;
+         let type = document.getElementById("Type").value;
+         let episodes = document.getElementById("Episodes").value;
+         setOpenPopup(false);
+
+        apiPost("/product", `${[name, rating, type, episodes]}`)
+            .then(r => setData(r));
+    }
 
     return (
-        <div className="container">
+        <div className="container" >
 
             <div className="tool-container">
                 <button className="add-button" onClick={() => setOpenPopup(true)} >Add new anime to list</button>
@@ -38,13 +52,14 @@ const HomePage = () => {
                 {productList}
             </div>
             <Popup  openPopup = {openPopup} setOpenPopup = {setOpenPopup} sx={{alignItems: "center"}}>
-                <TextField id="outlined-basic" label="Name" variant="outlined" />
-                <TextField id="outlined-basic" label="Rating" variant="outlined" />
-                <TextField id="outlined-basic" label="Type" variant="outlined" />
-                <TextField id="outlined-basic" label="Episodes" variant="outlined" /><br/>
-                <div className="save-button-container">
-                    <button className="save-button">Save</button>
-                </div>
+                    <TextField id="Name" label="Name" variant="outlined"/>
+                    <TextField id="Rating" label="Rating" variant="outlined"/>
+                    <TextField id="Type" label="Type" variant="outlined"/>
+                    <TextField id="Episodes" label="Episodes" variant="outlined"/>
+                    <div className="save-button-container">
+                        <button className="close-button" onClick={() => setOpenPopup(false)} >close</button>
+                        <button className="save-button" onClick={addAnime} >Save</button>
+                    </div>
             </Popup>
         </div>
     )
