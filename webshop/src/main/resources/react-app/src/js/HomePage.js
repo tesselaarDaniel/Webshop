@@ -44,9 +44,9 @@ const HomePage = () => {
             <div className="container">
                 <div className="row col-titles">
                     <div className="col">Name</div>
-                    <div className="col">rating</div>
-                    <div className="col">episodes</div>
-                    <div className="col">type</div>
+                    <div className="col">Rating</div>
+                    <div className="col">Episodes</div>
+                    <div className="col">Type</div>
                     <div className="col"></div>
                 </div>
                 {productList}

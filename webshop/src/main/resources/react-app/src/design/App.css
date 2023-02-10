@@ -77,11 +77,13 @@ body {
   background: dimgrey;
   text-align: left;
   padding: 0.5vh 0.3vh;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .add-button {
   background: #599bb3 linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-  border-radius:8px;
+  border-radius:4px;
   display:inline-block;
   cursor:pointer;
   color:#ffffff;
@@ -100,7 +102,7 @@ body {
 
 .logo {
   width: 250px;
-  height: 200px;
+  height: 175px;
 }
 
 .col-titles {
