@@ -50,7 +50,7 @@
 
 .content {
   margin: auto;
-  width: 50%;
+  width: 70%;
   height: 100vh;
   padding: 10px;
   font-weight: bold;
@@ -105,4 +105,15 @@ body {
 
 .col-titles {
   font-size: 20px;
+}
+
+.save-button {
+  margin-top: 5px;
+  background: #599bb3 linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+  width: 15vh;
+  padding: 6px;
+}
+
+.save-button-container {
+  text-align: right;
 }
