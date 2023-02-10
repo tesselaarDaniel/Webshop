@@ -55,6 +55,7 @@
   padding: 10px;
   font-weight: bold;
   background: dimgrey;
+  border-radius: 3px;
 }
 
 body {
@@ -124,3 +125,4 @@ body {
   width: 15vh;
   padding: 6px;
 }
+

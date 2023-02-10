@@ -1,0 +1,28 @@
+/* Navbar container */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial;
+    margin-bottom: 20px;
+    padding: 0.2vh;
+    height: 10vh;
+    vertical-align: center;
+}
+
+/* Links inside the navbar */
+.navbar a {
+    font-size: 16px;
+    color: white;
+    text-align: left;
+    padding: 8px 10vh;
+    vertical-align: center;
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover {
+    background: #599bb3 linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+}
+
+.nav-button {
+    border-right: 3px solid grey;
+}
