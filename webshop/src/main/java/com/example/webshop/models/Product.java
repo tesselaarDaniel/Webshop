@@ -53,12 +53,18 @@ public class Product {
         return picture;
     }
 
+    public Integer getId(){return id;}
+
     public void setName(String name) {
         this.name = name;
     }
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public void setId(Integer id){
+        this.id = id;
     }
 
     public void setEpisodes(Integer episodes) {

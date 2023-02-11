@@ -3,6 +3,7 @@ package com.example.webshop.services;
 import com.example.webshop.models.Product;
 import com.example.webshop.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -22,5 +23,10 @@ public class ProductService {
         String type = product[2];
         Integer episodes = Integer.valueOf(product[3]);
         productRepository.save(new Product(name, rating, type, episodes));
+    }
+
+    public void removeProduct(String productId) {
+        Integer id = Integer.valueOf(productId);
+        productRepository.deleteById(id);
     }
 }

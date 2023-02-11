@@ -4,10 +4,7 @@ import com.example.webshop.models.Product;
 import com.example.webshop.repositories.ProductRepository;
 import com.example.webshop.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +18,15 @@ public class ProductController {
 
     @GetMapping("/product")
     public List<Product> getProduct(){
+        return productService.getAllProduct();
+    }
+
+    @PostMapping("/product/delete")
+    public List<Product> removeProduct(@RequestBody String productId){
+        System.out.println("-------------------");
+        System.out.println(productId);
+        System.out.println("-------------------");
+        productService.removeProduct(productId);
         return productService.getAllProduct();
     }
 

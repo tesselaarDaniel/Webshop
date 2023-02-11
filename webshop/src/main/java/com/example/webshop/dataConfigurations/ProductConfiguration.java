@@ -19,7 +19,6 @@ public class ProductConfiguration {
             Product hxh = new Product("Hunter x hunter", 6.6, 150, "shounen fight", "link");
             Product fullMetalAlchemistBrotherhood = new Product("Full metal alchemist brotherhood", 4.5, 150, "shounen fight", "link");
 
-
             productRepository.saveAll(List.of(naruto, nanatsuNoTaizai, goblinSlayer, hxh, fullMetalAlchemistBrotherhood));
         };
     }
