@@ -21,11 +21,8 @@ public class ProductController {
         return productService.getAllProduct();
     }
 
-    @PostMapping("/product/delete")
-    public List<Product> removeProduct(@RequestBody String productId){
-        System.out.println("-------------------");
-        System.out.println(productId);
-        System.out.println("-------------------");
+    @DeleteMapping(value = "/product/{productId}")
+    public List<Product> removeProduct(@PathVariable("productId") String productId){
         productService.removeProduct(productId);
         return productService.getAllProduct();
     }

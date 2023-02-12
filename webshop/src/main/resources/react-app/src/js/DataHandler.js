@@ -6,11 +6,10 @@ export async function apiGet(url){
         return response.json();
     }
 }
-export async function apiDelete(url, payload){
+export async function apiDelete(url){
     let response = await fetch(url, {
         method: "DELETE",
         headers: {"Content-type": "application/json"},
-        body: JSON.stringify(payload)
     });
     if (response.status === 200) {
         return response.json();

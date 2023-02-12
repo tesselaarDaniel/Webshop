@@ -44,13 +44,12 @@ const HomePage = () => {
     }
 
     function deleteAnime(id){
-        apiPost("/product/delete", id)
+        apiDelete(`/product/${id}`)
             .then(r => setData(r));
     }
 
     return (
         <div className="container" >
-
             <div className="tool-container">
                 <button className="add-button" onClick={() => setOpenPopup(true)} >Add new anime to list</button>
             </div>
