@@ -6,9 +6,8 @@ import Popup from "./Popup";
 
 
 const HomePage = () => {
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]);
     const [openPopup, setOpenPopup] = useState(false);
-    const [value, setValue] = useState([]);
 
     const productList = data.map( product =>
         <div className="row anime-row" id={product.id}>
@@ -28,10 +27,9 @@ const HomePage = () => {
         </div>
         );
 
-    useEffect(() => {
         apiGet(`/product`)
             .then(r => setData(r))
-    }, []);
+
      function addAnime(){
          let name = document.getElementById("Name").value;
          let rating = document.getElementById("Rating").value;
@@ -51,7 +49,7 @@ const HomePage = () => {
     return (
         <div className="container" >
             <div className="tool-container">
-                <button className="add-button" onClick={() => setOpenPopup(true)} >Add new anime to list</button>
+                <button className="add-button" onClick={() => setOpenPopup(true)} >Add new anime to database</button>
             </div>
             <div className="container">
                 <div className="row col-titles">
