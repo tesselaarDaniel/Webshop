@@ -4,24 +4,26 @@ import java.util.List;
 
 @Entity
 public class Otaku {
-    public List<Product> getProducts() {
-        return products;
-    }
 
-    public Otaku(String name, String passwrod, List<Product> products) {
+    public Otaku(String name, String passwrod) {
         this.name = name;
         this.passwrod = passwrod;
-        this.products = products;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Integer id;
+
     private String name;
     private String passwrod;
-    @ManyToMany
+    @OneToMany
     private List<Product> products;
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
 
     public void setId(Integer id) {
         this.id = id;
