@@ -13,9 +13,16 @@
 .navbar a {
     font-size: 16px;
     color: white;
-    text-align: left;
     padding: 8px 10vh;
     vertical-align: center;
+}
+
+.left-nav {
+    text-align: left;
+}
+
+.right-nav {
+    text-align: right;
 }
 
 /* Add a red background color to navbar links on hover */
@@ -23,6 +30,10 @@
     background: #599bb3 linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
 }
 
-.nav-button {
+.left-nav-button {
     border-right: 3px solid grey;
+}
+
+.right-nav-button {
+    border-left: 3px solid grey;
 }

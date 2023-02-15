@@ -27,8 +27,10 @@ const HomePage = () => {
         </div>
         );
 
+    useEffect(() => {
         apiGet(`/product`)
             .then(r => setData(r))
+    }, []);
 
      function addAnime(){
          let name = document.getElementById("Name").value;

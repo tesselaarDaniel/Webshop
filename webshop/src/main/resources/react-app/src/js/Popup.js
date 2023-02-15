@@ -6,7 +6,7 @@ export default function Popup(props) {
    return (
        <Dialog open={openPopup} maxWidth="50vh">
            <DialogTitle>
-               <div>Add new anime to list:</div>
+               <div>Add new anime to database:</div>
            </DialogTitle>
            <DialogContent>
                <div>

@@ -6,6 +6,7 @@ import {Container, Typography} from "@mui/material";
 import TopNavbar from "./TopNavbar";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import UserList from "./UserList";
+import RegistrationPage from "./RegistrationPage";
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
           <div className="header-container">
                   <img className="logo" src={logo} />
           </div>
-          <div className="navbar">
+          <div>
               <TopNavbar/>
           </div>
           <div className="content">
@@ -23,6 +24,7 @@ function App() {
                       <Route exact path="/home" element={<HomePage/>}/>
                       <Route exact path="/" element={<HomePage/>}/>
                       <Route exact path="/user-list" element={<UserList/>}/>
+                      <Route exact path="/registration" element={<RegistrationPage/>}/>
                   </Routes>
               </BrowserRouter>
           </div>
