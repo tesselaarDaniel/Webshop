@@ -2,6 +2,8 @@ package com.example.webshop.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Product {
     @Id
@@ -13,6 +15,18 @@ public class Product {
     private Integer episodes;
     private String type;
     private String picture;
+    @ManyToMany(mappedBy = "products")
+    private List<Otaku> users;
+
+    public List<Otaku> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<Otaku> users) {
+        this.users = users;
+    }
+
+
 
     public Product(String name, Double rating, Integer episodes, String type, String picture) {
         this.name = name;
