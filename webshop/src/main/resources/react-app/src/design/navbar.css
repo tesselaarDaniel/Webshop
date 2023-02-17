@@ -17,12 +17,14 @@
     vertical-align: center;
 }
 
-.left-nav {
-    text-align: left;
-}
+
 
 .right-nav {
     text-align: right;
+}
+
+.left-nav {
+    text-align: left;
 }
 
 /* Add a red background color to navbar links on hover */
@@ -36,4 +38,13 @@
 
 .right-nav-button {
     border-left: 3px solid grey;
+}
+
+.header-name-container {
+    font-family: Arial;
+    color: cyan;
+    margin-right: 100px;
+    margin-bottom: 25px;
+    font-size: 20px;
+    text-align: right;
 }

@@ -71,7 +71,7 @@ const HomePage = () => {
                     <TextField id="Episodes" label="Episodes" variant="outlined"/>
                     <div className="save-button-container">
                         <button className="close-button" onClick={() => setOpenPopup(false)} >close</button>
-                        <button className="save-button" onClick={addAnime} >Save</button>
+                        <button className="save-button" onClick={addAnime}>Save</button>
                     </div>
             </Popup>
         </div>
