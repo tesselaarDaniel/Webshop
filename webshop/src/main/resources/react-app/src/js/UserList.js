@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
-import Popup from "./Popup";
-import {TextField} from "@mui/material";
 import '../design/SearchingBar.css'
 import {apiGet} from "./DataHandler";
 
 export default function UserList(){
-    const [data, setData] = useState([]);
-    const productNameList = data.map(product => <a href={`#${product.name}`}>{product.name}</a>);
-    const productList = data.map( product =>
+    const [allProductData, setAllProductData] = useState([]);
+    const [userProductData, setUserProductData] = useState([]);
+    const productNameList = allProductData.map(product => <a href={`#${product.name}`} onClick={() => addAnimeToUserList(product.id)}>{product.name}</a>);
+    let id = sessionStorage.getItem("id");
+    const productList = userProductData.map( product =>
         <div className="row anime-row" id={product.id}>
             <div className="col">{product.name}</div>
             <div className="col">{product.rating}</div>
@@ -19,10 +19,16 @@ export default function UserList(){
         </div>
     );
 
+    function addAnimeToUserList(id){
+        let productId = id;
+        let userId = sessionStorage.getItem("id");
+    }
 
     useEffect(() => {
         apiGet(`/product`)
-            .then(r => setData(r))
+            .then(r => setAllProductData(r));
+        apiGet(`/user/${id}`)
+                    .then(r => setUserProductData(r));
     }, []);
 
     function searchFunction() {
@@ -30,7 +36,7 @@ export default function UserList(){
     }
 
     function filterFunction() {
-        let input, filter, ul, li, a, i;
+        let input, filter, a, i;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
         let div = document.getElementById("myDropdown");

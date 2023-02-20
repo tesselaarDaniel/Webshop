@@ -5,10 +5,7 @@ import com.example.webshop.models.Product;
 import com.example.webshop.services.OtakuService;
 import com.example.webshop.services.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,10 +16,18 @@ public class OtakuController {
     private OtakuService otakuService;
 
     @PostMapping("/user")
-    public void addUser(@RequestBody String user){
+    public Validation addUser(@RequestBody String user){
         String productStr = user.substring(1, user.length() - 1);
         String[] arrOfStr = productStr.split(",", 4);
-        otakuService.addUser(arrOfStr);
+        if (! otakuService.checkUserRegistration(arrOfStr).getValidation()){
+            otakuService.addUser(arrOfStr);
+            Otaku otaku = otakuService.getUserByName(arrOfStr);
+            Integer id = otaku.getId();
+            Validation validation = otakuService.checkUserRegistration(arrOfStr);
+            validation.setUserId(id);
+            return validation;
+        }
+        return otakuService.checkUserRegistration(arrOfStr);
     }
 
     @PostMapping("/login")
@@ -32,4 +37,12 @@ public class OtakuController {
         return otakuService.checkUser(arrOfStr);
     }
 
+    @GetMapping(value = "/user/{productId}")
+    public List<Product> removeProduct(@PathVariable("productId") String userId){
+        System.out.println("---------------------------------------------------------------");
+        System.out.println(userId);
+        System.out.println(otakuService.getUserList(userId));
+        System.out.println("---------------------------------------------------------------");
+        return otakuService.getUserList(userId);
+    }
 }

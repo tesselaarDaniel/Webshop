@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import '../design/navbar.css';
 import '../design/Registration.css'
 import joinus from '../joinus.jpeg';
@@ -6,11 +6,19 @@ import {Dialog, DialogContent, DialogTitle, TextField} from "@mui/material";
 import {apiPost} from "./DataHandler";
 
 export default function RegistrationPage(){
+    const [data, setData] = useState([]);
     function addUser(){
         let name = document.getElementById("user-name").value;
         let password = document.getElementById("password").value;
-        sessionStorage.setItem("name", name);
-        apiPost("/user", `${[name, password]}`);
+        apiPost("/user", `${[name, password]}`)
+            .then(r => setData(r));
+        if (data.validation === false){
+            sessionStorage.setItem("name", name);
+            sessionStorage.setItem("name", name);
+            window.location = "http://localhost:3000/home";
+        } else {
+            window.alert("This username is alredy used!")
+        }
     }
 
     return (
@@ -21,7 +29,7 @@ export default function RegistrationPage(){
                 <DialogContent>
                     <TextField id="user-name" label="Name" variant="outlined" className="reg"/>
                     <TextField id="password" label="Password" variant="outlined" className="reg" type="password"/>
-                    <a href="/home"> <button className="save-button reg-button" onClick={addUser}>Save</button></a>
+                    <button className="save-button reg-button" onClick={addUser}>Save</button>
                 </DialogContent>
             <img src={joinus} alt="joinus" className="joinus"/>
         </div>
