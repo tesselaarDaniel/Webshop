@@ -14,7 +14,7 @@ export default function RegistrationPage(){
             .then(r => setData(r));
         if (data.validation === false){
             sessionStorage.setItem("name", name);
-            sessionStorage.setItem("name", name);
+            sessionStorage.setItem("id", data.userId);
             window.location = "http://localhost:3000/home";
         } else {
             window.alert("This username is alredy used!")

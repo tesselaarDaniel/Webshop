@@ -19,13 +19,11 @@ public class OtakuController {
     public Validation addUser(@RequestBody String user){
         String productStr = user.substring(1, user.length() - 1);
         String[] arrOfStr = productStr.split(",", 4);
-        if (! otakuService.checkUserRegistration(arrOfStr).getValidation()){
+        if (!otakuService.checkUserRegistration(arrOfStr).getValidation()){
             otakuService.addUser(arrOfStr);
             Otaku otaku = otakuService.getUserByName(arrOfStr);
             Integer id = otaku.getId();
-            Validation validation = otakuService.checkUserRegistration(arrOfStr);
-            validation.setUserId(id);
-            return validation;
+            return new Validation(false, id);
         }
         return otakuService.checkUserRegistration(arrOfStr);
     }

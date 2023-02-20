@@ -20,6 +20,7 @@ export default function UserList(){
     );
 
     function addAnimeToUserList(id){
+        console.log(sessionStorage.getItem("id"));
         let productId = id;
         let userId = sessionStorage.getItem("id");
     }
@@ -28,7 +29,7 @@ export default function UserList(){
         apiGet(`/product`)
             .then(r => setAllProductData(r));
         apiGet(`/user/${id}`)
-                    .then(r => setUserProductData(r));
+            .then(r => setUserProductData(r));
     }, []);
 
     function searchFunction() {
