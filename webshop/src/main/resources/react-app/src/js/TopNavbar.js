@@ -14,6 +14,7 @@ export default function TopNavbar(){
             </div>;
         } else {
             return <div className="right-nav">
+                <a href="user-list" className="right-nav-button">My list</a>
                 <a href="/home" className="right-nav-button" onClick={logout}>Log out</a>
             </div>;
         }
@@ -23,7 +24,6 @@ export default function TopNavbar(){
        <div className="navbar">
            <div className="left-nav">
                <a href="home" className="left-nav-button">Home</a>
-               <a href="user-list" className="left-nav-button">My list</a>
            </div>
            {session()}
        </div>

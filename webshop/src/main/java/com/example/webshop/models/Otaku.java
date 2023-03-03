@@ -17,18 +17,17 @@ public class Otaku {
 
     private String name;
     private String passwrod;
-    @OneToMany
+   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
 
     public List<Product> getProducts() {
         return products;
-    }
 
+    }
 
     public void setId(Integer id) {
         this.id = id;
     }
-
 
     public void setName(String name) {
         this.name = name;
@@ -37,8 +36,6 @@ public class Otaku {
     public void setPasswrod(String passwrod) {
         this.passwrod = passwrod;
     }
-
-
 
     public Otaku() {
 

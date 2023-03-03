@@ -2,6 +2,7 @@ package com.example.webshop.controllers;
 
 import com.example.webshop.models.Otaku;
 import com.example.webshop.models.Product;
+import com.example.webshop.repositories.OtakuRepository;
 import com.example.webshop.services.OtakuService;
 import com.example.webshop.services.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import java.util.List;
 public class OtakuController {
     @Autowired
     private OtakuService otakuService;
+    @Autowired
+    private OtakuRepository otakuRepository;
 
     @PostMapping("/user")
     public Validation addUser(@RequestBody String user){
@@ -36,11 +39,16 @@ public class OtakuController {
     }
 
     @GetMapping(value = "/user/{productId}")
-    public List<Product> removeProduct(@PathVariable("productId") String userId){
-        System.out.println("---------------------------------------------------------------");
-        System.out.println(userId);
-        System.out.println(otakuService.getUserList(userId));
-        System.out.println("---------------------------------------------------------------");
+    public List<Product> getUserProductList(@PathVariable("productId") String userId){
+        return otakuService.getUserList(userId);
+    }
+
+    @PostMapping("/add-anime-user")
+    public List<Product> addAnimeToUser(@RequestBody String ids){
+        String productStr = ids.substring(1, ids.length() - 1);
+        String[] arrOfStr = productStr.split(",", 2);
+        String userId = arrOfStr[0];
+        otakuService.addAnimeToUser(arrOfStr);
         return otakuService.getUserList(userId);
     }
 }

@@ -43,7 +43,7 @@ const HomePage = () => {
             .then(r => setData(r));
     }
 
-    function deleteAnime(id){
+   function deleteAnime(id){
         apiDelete(`/product/${id}`)
             .then(r => setData(r));
     }

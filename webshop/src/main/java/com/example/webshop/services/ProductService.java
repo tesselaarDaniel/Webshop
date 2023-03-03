@@ -10,11 +10,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ProductService {
     @Autowired
     ProductRepository productRepository;
+    @Autowired
+    private OtakuRepository otakuRepository;
+
     public List<Product> getAllProduct(){
         return productRepository.findAll();
     }
@@ -27,6 +31,10 @@ public class ProductService {
     }
     public void removeProduct(String productId) {
         Integer id = Integer.valueOf(productId);
-        productRepository.deleteById(id);
+        Product product = productRepository.getReferenceById(id);
+        for (Otaku otaku : otakuRepository.findAll()){
+            otaku.getProducts().remove(product);
+            otakuRepository.save(otaku);
+        }
     }
 }

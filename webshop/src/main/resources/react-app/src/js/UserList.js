@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import '../design/SearchingBar.css'
-import {apiGet} from "./DataHandler";
+import {apiGet, apiPost} from "./DataHandler";
 
 export default function UserList(){
     const [allProductData, setAllProductData] = useState([]);
     const [userProductData, setUserProductData] = useState([]);
     const productNameList = allProductData.map(product => <a href={`#${product.name}`} onClick={() => addAnimeToUserList(product.id)}>{product.name}</a>);
-    let id = sessionStorage.getItem("id");
+    let userId = sessionStorage.getItem("id");
     const productList = userProductData.map( product =>
         <div className="row anime-row" id={product.id}>
             <div className="col">{product.name}</div>
@@ -19,16 +19,16 @@ export default function UserList(){
         </div>
     );
 
-    function addAnimeToUserList(id){
-        console.log(sessionStorage.getItem("id"));
-        let productId = id;
-        let userId = sessionStorage.getItem("id");
+    function addAnimeToUserList(productId){
+        apiPost("/add-anime-user", `${[userId, productId]}`)
+            .then(r => setUserProductData(r));
+
     }
 
     useEffect(() => {
         apiGet(`/product`)
             .then(r => setAllProductData(r));
-        apiGet(`/user/${id}`)
+             apiGet(`/user/${userId}`)
             .then(r => setUserProductData(r));
     }, []);
 
@@ -53,13 +53,26 @@ export default function UserList(){
     }
 
     return (
-        <div className="dropdown tool-container">
-            <button onClick={searchFunction} className="dropbtn">Add new anime to list</button>
-            <div id="myDropdown" className="dropdown-content">
-                <input type="text" placeholder="Search.." id="myInput" onKeyUp={filterFunction}/>
-                {productNameList}
+        <div className="container" >
+            <div className="dropdown tool-container">
+                <button onClick={searchFunction} className="dropbtn">Add new anime to list</button>
+                <div id="myDropdown" className="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onKeyUp={filterFunction}/>
+                    {productNameList}
+                </div>
             </div>
-        </div>
+                <div className="container">
+                    <div className="row col-titles">
+                        <div className="col">Name</div>
+                        <div className="col">Rating</div>
+                        <div className="col">Episodes</div>
+                        <div className="col">Type</div>
+                        <div className="col"></div>
+                        <div className="col"></div>
+                    </div>
+                    {productList}
+                </div>
+            </div>
     )
 
 }

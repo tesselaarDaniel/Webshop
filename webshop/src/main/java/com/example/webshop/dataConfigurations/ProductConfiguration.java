@@ -18,7 +18,6 @@ public class ProductConfiguration {
     @Autowired
     private ProductRepository productRepository;
 
-    @Bean
     CommandLineRunner commandLineRunner(){
         return args -> {
             Product naruto = new Product("naruto", 2.3, 300, "shounen fight", "link");

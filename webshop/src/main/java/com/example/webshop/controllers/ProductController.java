@@ -19,11 +19,13 @@ public class ProductController {
     public List<Product> getProduct(){
         return productService.getAllProduct();
     }
+
     @DeleteMapping(value = "/product/{productId}")
     public List<Product> removeProduct(@PathVariable("productId") String productId){
         productService.removeProduct(productId);
         return productService.getAllProduct();
     }
+
     @PostMapping("/product")
     public List<Product> addProduct(@RequestBody String product){
         String productStr = product.substring(1, product.length() - 1);

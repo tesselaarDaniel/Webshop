@@ -3,10 +3,13 @@ package com.example.webshop.services;
 import com.example.webshop.models.Otaku;
 import com.example.webshop.models.Product;
 import com.example.webshop.repositories.OtakuRepository;
+import com.example.webshop.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.webshop.models.Product;
 
 import java.security.MessageDigest;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +18,9 @@ import java.util.Objects;
 public class OtakuService {
     @Autowired
     private OtakuRepository otakuRepository;
+    @Autowired
+    private ProductRepository productRepository;
+
     public void addUser(String[] arrOfStr) {
         String name = arrOfStr[0];
         String password = hashPassword(arrOfStr[1]);
@@ -40,7 +46,6 @@ public class OtakuService {
                 return new Validation(true);
             }
         }
-        System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
         return new Validation(false);
     }
     public static String hashPassword(String password) {
@@ -68,6 +73,14 @@ public class OtakuService {
     public List<Product> getUserList(String sUserId) {
         Integer userId = Integer.valueOf(sUserId);
         return otakuRepository.getReferenceById(userId).getProducts();
+    }
+
+    public void addAnimeToUser(String[] arrOfStr) {
+        Integer userId = Integer.valueOf(arrOfStr[0]);
+        Integer productId = Integer.valueOf(arrOfStr[1]);
+        Otaku referenceById = otakuRepository.getReferenceById(userId);
+        referenceById.getProducts().add(productRepository.findById(productId).get());
+        otakuRepository.save(referenceById);
     }
 }
 
